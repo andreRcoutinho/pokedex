@@ -3,16 +3,16 @@ import styled from 'styled-components';
 
 const StyledButton = styled.button`
   background: ${(props) =>
-    props.$secondary
-      ? props.theme.colors.background
-      : props.theme.colors.primary};
+    props.$secondary ? 'transparent' : props.theme.colors.secondary};
   border: solid 3px;
   border-color: ${(props) =>
     props.$secondary
-      ? props.theme.colors.secondary
+      ? props.theme.colors.tertiary
       : props.theme.colors.primary};
   color: ${(props) =>
-    props.$secondary ? props.theme.colors.secondary : props.theme.colors.text};
+    props.$secondary
+      ? props.theme.colors.tertiary
+      : props.theme.colors.primary};
   cursor: pointer;
   padding: ${(props) => props.theme.space.sm} ${(props) => props.theme.space.md};
   min-height: ${(props) => props.theme.space.md};

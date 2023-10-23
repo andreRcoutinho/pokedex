@@ -27,15 +27,13 @@ export const base = {
 };
 
 export const light = {
-  primary: '#a7c957',
-  secondary: '#CE4257',
-  background: '#e7e7e7',
-  text: '#353535',
+  primary: '#F1F2EB',
+  secondary: '#2E332C',
+  tertiary: '#D8DAD3',
 };
 
 export const dark = {
-  primary: '#a7c957',
-  secondary: '#CE4257',
-  background: '#353535',
-  text: '#f8f8f8',
+  primary: '#2E332C',
+  secondary: '#F1F2EB',
+  tertiary: '#D8DAD3',
 };
