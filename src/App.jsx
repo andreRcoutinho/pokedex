@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { base, light, dark } from './themes.js';
 
-import Nav from './components/Nav.jsx';
+import Grid from './components/layout/Grid.jsx';
+import Nav from './components/layout/Nav.jsx';
 import Toggle from './components/Toggle.jsx';
+import Card from './components/Card.jsx';
 import Button from './components/Button.jsx';
 
 const ThemePreferenceContext = React.createContext();
@@ -32,9 +34,30 @@ function App() {
             }}
           ></Toggle>
         </Nav>
-        <div>
-          <Button isSecondary>Secondary button says: </Button>
-          <Button />
+        <div
+          style={{
+            outline: '6px solid black',
+            margin: '4rem 6rem',
+            padding: '4rem 6rem',
+          }}
+        >
+          <Grid>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+          </Grid>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              marginTop: '4rem',
+            }}
+          >
+            <Button></Button>
+          </div>
         </div>
       </ThemeProvider>
     </ThemePreferenceContext.Provider>
