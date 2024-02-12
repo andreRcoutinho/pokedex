@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../font/font.css';
+import { FlexCenter } from './utils/Flex';
 
 const gbColors = {
   primary: '#C8C8C8',
@@ -101,7 +102,7 @@ const Screen = styled.div`
 
 export default function Card(props) {
   const { sprites, types, name } = props;
-  //   const spritesObj = JSON.parse(sprites);
+  const sprite = sprites.other.showdown.front_default;
 
   return (
     <StyledCard>
@@ -109,10 +110,10 @@ export default function Card(props) {
         <span>dot matrix with stereo sound</span>
       </TopLines>
       <Screen>
-        <div>
-          {/* <img src={spritesObj.front_default} alt={`${name}'s image.`}></img> */}
+        <FlexCenter>
+          <img src={sprite} alt={`${name}'s image.`}></img>
           <p>{name}</p>
-        </div>
+        </FlexCenter>
         <div>
           {types.map((type, index) => {
             return (
