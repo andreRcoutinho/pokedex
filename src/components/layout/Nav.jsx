@@ -33,8 +33,8 @@ export default function Nav(props) {
   return (
     <StyledNav>
       <FirstHalf>
-        {props.links.map((link) => (
-          <span>{link}</span>
+        {props.links.map((link, i) => (
+          <span key={`${link}_${i}`}>{link}</span>
         ))}
       </FirstHalf>
       <SecondHalf>{props.children}</SecondHalf>
