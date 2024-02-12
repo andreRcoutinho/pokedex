@@ -21,13 +21,11 @@ const StyledButton = styled.button`
 `;
 
 export default function Button(props) {
-  const [clicked, setClicked] = useState(false);
   const { isSecondary = false } = props;
 
   return (
-    <StyledButton onClick={() => setClicked(!clicked)} $secondary={isSecondary}>
+    <StyledButton $secondary={isSecondary} onClick={props.onClick}>
       {props.children}
-      {clicked ? 'In progress...' : 'Hello'}
     </StyledButton>
   );
 }

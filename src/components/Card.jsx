@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import '../font/font.css';
 
 const gbColors = {
   primary: '#C8C8C8',
@@ -79,15 +80,49 @@ const Screen = styled.div`
   border-top: 6px solid #000;
   height: 210px;
   width: 240px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & p {
+    color: rgba(5, 30, 5, 0.8);
+    font-family: 'PokemonClassic';
+    text-transform: uppercase;
+    font-size: 0.7em;
+  }
+
+  & img {
+    max-width: 125px;
+    filter: grayscale(90%);
+  }
 `;
 
 export default function Card(props) {
+  const { sprites, types, name } = props;
+  //   const spritesObj = JSON.parse(sprites);
+
   return (
     <StyledCard>
       <TopLines>
         <span>dot matrix with stereo sound</span>
       </TopLines>
-      <Screen></Screen>
+      <Screen>
+        <div>
+          {/* <img src={spritesObj.front_default} alt={`${name}'s image.`}></img> */}
+          <p>{name}</p>
+        </div>
+        <div>
+          {types.map((type, index) => {
+            return (
+              <p key={`${name}_${type}_${index}`}>
+                {type.pokemon_v2_type.name}
+              </p>
+            );
+          })}
+        </div>
+      </Screen>
     </StyledCard>
   );
 }
