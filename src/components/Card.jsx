@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../font/font.css';
-import { FlexCenter } from './utils/Flex';
+import { Flex } from './styles/Flex.styled';
 
 const gbColors = {
   primary: '#C8C8C8',
@@ -110,10 +110,10 @@ export default function Card(props) {
         <span>dot matrix with stereo sound</span>
       </TopLines>
       <Screen>
-        <FlexCenter>
+        <Flex flexDirection="column">
           <img src={sprite} alt={`${name}'s image.`}></img>
           <p>{name}</p>
-        </FlexCenter>
+        </Flex>
         <div>
           {types.map((type, index) => {
             return (

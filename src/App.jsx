@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { base, light, dark } from './themes.js';
 
@@ -7,6 +7,7 @@ import { GET_POKEMONS } from './queries.js';
 
 import Grid from './components/layout/Grid.jsx';
 import Nav from './components/layout/Nav.jsx';
+import { Flex } from './components/styles/Flex.styled.js';
 import Toggle from './components/Toggle.jsx';
 import Card from './components/Card.jsx';
 import Button from './components/Button.jsx';
@@ -48,7 +49,6 @@ function App() {
   if (error) return `Error! ${error}`;
 
   const loadMore = () => {
-    // console.log(data.pokemon_v2_pokemon.length);
     // fetchMore function from `useQuery` to fetch more content with `updateQuery`
     fetchMore({
       variables: {
@@ -56,6 +56,7 @@ function App() {
       },
       updateQuery: (previousQueryResult, { fetchMoreResult }) => {
         if (!fetchMoreResult) return previousQueryResult;
+
         return Object.assign({}, previousQueryResult, {
           pokemon_v2_pokemon: [
             ...previousQueryResult.pokemon_v2_pokemon,
@@ -69,7 +70,7 @@ function App() {
   return (
     <ThemePreferenceContext.Provider value={{ currentTheme, setCurrentTheme }}>
       <ThemeProvider theme={theme}>
-        <Nav links={['test1', 'test2', 'test3']}>
+        <Nav links={['temp1', 'temp2', 'temp3']}>
           <Toggle
             onChange={() => {
               let value = currentTheme === 'light' ? 'dark' : 'light';
@@ -85,26 +86,21 @@ function App() {
           }}
         >
           <Grid>
-            {data.pokemon_v2_pokemon.map((pokemon, index) => {
-              return (
-                <Card
-                  key={`poke-${pokemon.id}_${index}`}
-                  name={pokemon.name}
-                  sprites={pokemon.pokemon_v2_pokemonsprites[0].sprites}
-                  types={pokemon.pokemon_v2_pokemontypes}
-                ></Card>
-              );
-            })}
+            {data.pokemon_v2_pokemon &&
+              data.pokemon_v2_pokemon.map((pokemon, index) => {
+                return (
+                  <Card
+                    key={`poke-${pokemon.id}_${index}`}
+                    name={pokemon.name}
+                    sprites={pokemon.pokemon_v2_pokemonsprites[0].sprites}
+                    types={pokemon.pokemon_v2_pokemontypes}
+                  ></Card>
+                );
+              })}
           </Grid>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              marginTop: '4rem',
-            }}
-          >
+          <Flex>
             <Button onClick={loadMore}>Load more</Button>
-          </div>
+          </Flex>
         </div>
       </ThemeProvider>
     </ThemePreferenceContext.Provider>
