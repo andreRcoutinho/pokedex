@@ -19,8 +19,12 @@ const themesMap = {
   dark,
 };
 
+const themeMode = localStorage.getItem('themeMode');
+
 function App() {
-  const [currentTheme, setCurrentTheme] = useState('light');
+  const [currentTheme, setCurrentTheme] = useState(
+    themeMode ? themeMode : 'light'
+  );
 
   const theme = {
     ...base,
@@ -75,7 +79,9 @@ function App() {
             onChange={() => {
               let value = currentTheme === 'light' ? 'dark' : 'light';
               setCurrentTheme(value);
+              localStorage.setItem('themeMode', value);
             }}
+            isDark={currentTheme === 'dark'}
           ></Toggle>
         </Nav>
         <div

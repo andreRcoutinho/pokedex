@@ -34,6 +34,13 @@ const StyledSwitch = styled.input`
   }
 `;
 
-export default function Toggle({ onChange }) {
-  return <StyledSwitch type="checkbox" onChange={onChange}></StyledSwitch>;
+export default function Toggle({ onChange, isDark }) {
+  return (
+    <StyledSwitch
+      type="checkbox"
+      onChange={onChange}
+      value={isDark}
+      checked={isDark}
+    ></StyledSwitch>
+  );
 }
