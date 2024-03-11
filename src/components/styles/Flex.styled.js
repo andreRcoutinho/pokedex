@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const Flex = styled.div`
   display: flex;
-  flex-direction: ${({ flexDirection }) => flexDirection};
-  align-items: ${({ alignItems }) => alignItems};
-  justify-content: ${({ justifyContent }) => justifyContent};
+  flex-direction: ${({ $flexDirection }) => $flexDirection};
+  align-items: ${({ $alignItems }) => $alignItems};
+  justify-content: ${({ $justifyContent }) => $justifyContent};
 
   & > div {
     flex: 1;
@@ -12,7 +12,7 @@ export const Flex = styled.div`
 `;
 
 Flex.defaultProps = {
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
+  $flexDirection: 'row',
+  $alignItems: 'center',
+  $justifyContent: 'center',
 };

@@ -99,7 +99,9 @@ function App() {
               })}
           </Grid>
           <Flex>
-            <Button onClick={loadMore}>Load more</Button>
+            <Button onClick={loadMore} hasMarginTop>
+              Load more
+            </Button>
           </Flex>
         </div>
       </ThemeProvider>

@@ -110,7 +110,7 @@ export default function Card(props) {
         <span>dot matrix with stereo sound</span>
       </TopLines>
       <Screen>
-        <Flex flexDirection="column">
+        <Flex $flexDirection="column">
           <img src={sprite} alt={`${name}'s image.`}></img>
           <p>{name}</p>
         </Flex>

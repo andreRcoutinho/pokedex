@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
@@ -18,13 +18,18 @@ const StyledButton = styled.button`
   min-height: ${(props) => props.theme.space.md};
   min-width: ${(props) => props.theme.space.xxl};
   font-size: ${(props) => props.theme.fontSize.lg};
+  margin-top: ${({ $hasMarginTop }) => ($hasMarginTop ? '2em' : '0px')};
 `;
 
 export default function Button(props) {
-  const { isSecondary = false } = props;
+  const { isSecondary = false, hasMarginTop = true } = props;
 
   return (
-    <StyledButton $secondary={isSecondary} onClick={props.onClick}>
+    <StyledButton
+      $secondary={isSecondary}
+      $hasMarginTop={hasMarginTop}
+      onClick={props.onClick}
+    >
       {props.children}
     </StyledButton>
   );
